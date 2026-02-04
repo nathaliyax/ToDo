@@ -1,11 +1,10 @@
 package todolistapi.service;
-
-import com.nathy.todolistapi.dto.UsuarioRequestDTO;
-import com.nathy.todolistapi.dto.UsuarioResponseDTO;
-import com.nathy.todolistapi.entity.Usuario;
-import com.nathy.todolistapi.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PathVariable;
+import todolistapi.dto.UsuarioRequestDTO;
+import todolistapi.dto.UsuarioResponseDTO;
+import todolistapi.entity.Usuario;
+import todolistapi.repository.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,14 +18,12 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    // Cadastrar usuarios
     public String saveUser(UsuarioRequestDTO user){
         Usuario usuario = new Usuario(user);
         usuarioRepository.save(usuario);
         return "Usuario salvo com sucesso";
     }
 
-    // Login com email e senha
     public String findUser(Usuario user){
         Usuario findUser = usuarioRepository.findByEmail(user.getEmail());
         if (findUser == null) {
@@ -40,9 +37,6 @@ public class UsuarioService {
         }
     }
 
-    // Listar todos os usuarios
-
-    // Metodo novo com lambda
     public List<UsuarioResponseDTO> listUsers(){
         List<Usuario> usuarios = usuarioRepository.findAll();
         List<UsuarioResponseDTO> usuariosDTO = usuarios.stream()
@@ -51,7 +45,6 @@ public class UsuarioService {
         return usuariosDTO;
     }
 
-    // Deletar Usuario
     public String deleteUser(long id){
         if (!usuarioRepository.existsById(id)) {
             return "Usuario nao encontrado";
@@ -61,7 +54,6 @@ public class UsuarioService {
         }
     }
 
-    // Procurar pelo ID
     public UsuarioResponseDTO searchUser(@PathVariable long id){
         Optional<Usuario> usuario = usuarioRepository.findById(id);
         if (usuario.isEmpty()) {
@@ -71,7 +63,6 @@ public class UsuarioService {
         return usuarioResponseDTO;
     }
 
-    // Atualizar o usuario
     public String updateUser(long id, UsuarioRequestDTO user) {
         if (!usuarioRepository.existsById(id)) {
             return "Usuario nao encontrado";

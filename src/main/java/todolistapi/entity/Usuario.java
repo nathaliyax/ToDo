@@ -1,7 +1,8 @@
 package todolistapi.entity;
-
-import com.nathy.todolistapi.dto.UsuarioRequestDTO;
 import jakarta.persistence.*;
+import todolistapi.dto.UsuarioRequestDTO;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "tb_usuario")
@@ -16,7 +17,7 @@ public class Usuario {
     @Column(length = 80, unique = true)
     private String email;
     @Column(length = 50)
-    private String senha;
+    private String senha;;
 
 
     public Usuario() {
@@ -26,6 +27,7 @@ public class Usuario {
         this.nome = user.getNome();
         this.senha = user.getSenha();
         this.email = user.getEmail();
+
     }
 
     public String getSenha() {
@@ -59,5 +61,9 @@ public class Usuario {
     public void setId(long id) {
         this.id = id;
     }
+
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Tarefas> tarefas = new ArrayList<>();
 
 }

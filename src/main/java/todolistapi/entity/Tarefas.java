@@ -1,7 +1,7 @@
 package todolistapi.entity;
 
 import jakarta.persistence.*;
-
+import todolistapi.dto.TarefasRequestDTO;
 import java.util.Date;
 
 @Entity
@@ -27,7 +27,7 @@ public class Tarefas {
     public Tarefas() {
     }
 
-    public Tarefas(com.nathy.todolistapi.entity.TarefasRequestDTO task) {
+    public Tarefas(TarefasRequestDTO task) {
         this.nome = task.getNome();
         this.tarefa = task.getTarefa();
         this.status = StatusTarefa.PENDENTE;
@@ -60,4 +60,8 @@ public class Tarefas {
     public void setPrazo(Date prazo) {
         this.prazo = prazo;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
+    private Usuario cliente;
 }

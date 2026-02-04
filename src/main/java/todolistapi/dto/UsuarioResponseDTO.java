@@ -1,6 +1,7 @@
 package todolistapi.dto;
 
-import com.nathy.todolistapi.entity.Usuario;
+
+import todolistapi.entity.Usuario;
 
 public class UsuarioResponseDTO {
 

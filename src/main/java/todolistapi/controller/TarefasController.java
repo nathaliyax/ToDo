@@ -1,16 +1,15 @@
 package todolistapi.controller;
 
-
-import com.nathy.todolistapi.entity.Tarefas;
-import com.nathy.todolistapi.repository.TarefasRepository;
 import org.springframework.web.bind.annotation.*;
+import todolistapi.entity.Tarefas;
+import todolistapi.repository.TarefasRepository;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/tarefas")
 public class TarefasController {
-    private final TarefasRepository tasks;
+    private final todolistapi.repository.TarefasRepository tasks;
 
     public TarefasController(TarefasRepository tarefas) {
         this.tasks = tarefas;

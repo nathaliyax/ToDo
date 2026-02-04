@@ -1,12 +1,11 @@
 package todolistapi.dto;
-
-import com.nathy.todolistapi.entity.StatusTarefa;
-import com.nathy.todolistapi.entity.Tarefas;
-
+import todolistapi.entity.StatusTarefa;
+import todolistapi.entity.Tarefas;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
-public class TarefasResponseDTO {
+public class TarefasResponseDTO
+{
 
     private int id;
     private String nome;
@@ -51,8 +50,8 @@ public class TarefasResponseDTO {
 
     public String getMensagemStatus() {
         long dias = getDiasRestantes();
-        if (dias > 0) return "Faltam " + dias + " dias";
-        if (dias == 0) return "Vence hoje!";
-        return "Atrasada há " + Math.abs(dias) + " dias";
+        if (dias > 0) return "faltam " + dias + " dias";
+        if (dias == 0) return "vence hoje";
+        return "atrasada " + Math.abs(dias) + " dias";
     }
 }
