@@ -27,6 +27,7 @@ public class Usuario {
         this.nome = user.getNome();
         this.senha = user.getSenha();
         this.email = user.getEmail();
+        this.tarefas = user.getTarefas();
 
     }
 
@@ -62,6 +63,14 @@ public class Usuario {
         this.id = id;
     }
 
+
+    public List<Tarefas> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(List<Tarefas> tarefas) {
+        this.tarefas = tarefas;
+    }
 
     @OneToMany(mappedBy = "cliente")
     private List<Tarefas> tarefas = new ArrayList<>();

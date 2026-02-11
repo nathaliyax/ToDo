@@ -30,6 +30,7 @@ public class Tarefas {
     public Tarefas(TarefasRequestDTO task) {
         this.nome = task.getNome();
         this.tarefa = task.getTarefa();
+        this.cliente = task.getCliente();
         this.status = StatusTarefa.PENDENTE;
     }
 
@@ -59,6 +60,14 @@ public class Tarefas {
 
     public void setPrazo(Date prazo) {
         this.prazo = prazo;
+    }
+
+    public Usuario getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Usuario cliente) {
+        this.cliente = cliente;
     }
 
     @ManyToOne

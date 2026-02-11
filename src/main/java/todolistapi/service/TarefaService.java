@@ -55,7 +55,6 @@ public class TarefaService {
         } else {
             Tarefas updateTarefas = tarefasRepository.findById(id).get();
             updateTarefas.setTarefa(user.getTarefa());
-            updateTarefas.setTarefa(user.getTarefa());
             updateTarefas.setPrazo(user.getPrazo());
             tarefasRepository.save(updateTarefas);
             return "Tarefa OUT";

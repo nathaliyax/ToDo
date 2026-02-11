@@ -4,6 +4,7 @@ package todolistapi.dto;
 import jakarta.validation.constraints.NotNull;
 import todolistapi.entity.StatusTarefa;
 import jakarta.validation.constraints.NotBlank;
+import todolistapi.entity.Usuario;
 
 import java.util.Date;
 
@@ -21,11 +22,17 @@ public class TarefasRequestDTO {
     @NotNull(message = "Digite uma data valida")
     private Date prazo;
 
-    public TarefasRequestDTO(String nome, String tarefa, StatusTarefa status, Date prazo) {
+    private Usuario cliente;
+
+
+
+    public TarefasRequestDTO(String nome, String tarefa, StatusTarefa status, Date prazo, Usuario cliente) {
         this.nome = nome;
         this.tarefa = tarefa;
         this.status = status;
         this.prazo = prazo;
+        this.cliente = cliente;
+
     }
 
     public String getNome() {
@@ -58,5 +65,14 @@ public class TarefasRequestDTO {
 
     public void setPrazo(Date prazo) {
         this.prazo = prazo;
+
+    }
+
+    public Usuario getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Usuario cliente) {
+        this.cliente = cliente;
     }
 }
